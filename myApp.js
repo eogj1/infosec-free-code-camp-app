@@ -38,7 +38,17 @@ app.use(
 app.use(
   helmet.noCache()
 );
-
+// contentSecurityPolicy() prevents injection of anything unintended to your page
+// helmet supports both defaultSrc and default-src naming styles
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'"],
+      domain: ["'trusted-cdn.com'"],
+    },
+  })
+);
 
 module.exports = app;
 const api = require('./server.js');
