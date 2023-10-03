@@ -7,9 +7,7 @@ module.exports = app;
 const api = require('./server.js');
 app.disable('strict-transport-security');
 app.use(express.static('public'));
-app.use(helmet.hidePoweredBy({
-  setTo: 'PHP 4.2.0'
-}));
+app.use(helmet.hidePoweredBy());
 app.use('/_api', api);
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
