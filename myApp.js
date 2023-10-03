@@ -26,7 +26,7 @@ app.use(
   helmet.ieNoOpen()
 );
 // hsts() sets to use HTTPS for the next 90 days
-http.use
+app.use
   (helmet.hsts(
    {maxAge: timeInSeconds, force: true})
 );
