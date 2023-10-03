@@ -15,7 +15,7 @@ app.use(helmet({
   hsts: {
     maxAge: timeInSeconds, force: true 
   },
-  dnsPrefetchControl: disable
+  dnsPrefetchControl: false
 }));
 
 module.exports = app;
