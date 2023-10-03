@@ -3,6 +3,17 @@ const helmet = require('helmet');
 const app = express();
 const timeInSeconds = 90*24*60*60;
 
+// app.use(helmet()) automatically includes middleware
+app.use(helmet({
+  contentSecurityPolicy: { // prevents any unintended injection
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", 'trusted-cdn.com'], 
+    },
+  noCache: true // removes ability to cache (increase security, decrease performance)
+  }
+}));
+
 // hidePoweredBy hides express as it is vulnerable
 app.use(
   helmet.hidePoweredBy()
@@ -33,20 +44,6 @@ app.use(
 // dnsPrefetchControl() helps control DNS prefetching (increase privacy at cost of performance)
 app.use(
   helmet.dnsPrefetchControl()
-);
-// noCache() removes caching which will lose performance but good for updates to websites or for development
-app.use(
-  helmet.noCache()
-);
-// contentSecurityPolicy() prevents injection of anything unintended to your page
-// helmet supports both defaultSrc and default-src naming styles
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", 'trusted-cdn.com'],
-    },
-  })
 );
 
 module.exports = app;
