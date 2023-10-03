@@ -2,7 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const app = express();
 const timeInSeconds = 90*24*60*60;
-const bcrypt = require("bcrypt")
+
 
 // app.use(helmet()) automatically includes middleware
 app.use(helmet({
