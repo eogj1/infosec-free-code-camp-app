@@ -12,6 +12,8 @@ app.use(helmet.frameguard({
 app.use(helmet.xssFilter());
 // noSniff instructs the browser to not bypass the provided Content-type
 app.use(helmet.noSniff());
+// ieNoOpen prevents IE users from executing downloads in the site's trusted content
+app.use(helmet.ieNoOpen());
 
 module.exports = app;
 const api = require('./server.js');
