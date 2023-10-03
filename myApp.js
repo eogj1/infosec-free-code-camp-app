@@ -26,10 +26,15 @@ app.use(
   helmet.ieNoOpen()
 );
 // hsts() sets to use HTTPS for the next 90 days
-app.use
-  (helmet.hsts(
+app.use(
+  helmet.hsts(
    {maxAge: timeInSeconds, force: true})
 );
+// dnsPrefetchControl() helps control DNS prefetching (increase privacy at cost of performance)
+app.use(
+  helmet.dnsPrefetchControl()
+);
+
 
 module.exports = app;
 const api = require('./server.js');
