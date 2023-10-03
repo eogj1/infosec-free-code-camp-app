@@ -34,6 +34,10 @@ app.use(
 app.use(
   helmet.dnsPrefetchControl()
 );
+// noCache() removes caching which will lose performance but good for updates to websites or for development
+app.use(
+  helmet.noCache()
+);
 
 
 module.exports = app;
