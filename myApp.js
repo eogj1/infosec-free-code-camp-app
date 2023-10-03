@@ -2,7 +2,9 @@ const express = require('express');
 const helmet = require('helmet');
 const app = express();
 
+// hidePoweredBy hides express as it is vulnerable
 app.use(helmet.hidePoweredBy());
+// frameguard secures against framing to prevent clickjacking
 app.use(helmet.frameguard({
   action: 'deny'
 }));
