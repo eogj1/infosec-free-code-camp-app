@@ -3,10 +3,8 @@ const helmet = require('helmet');
 const app = express();
 
 
-
 module.exports = app;
 const api = require('./server.js');
-app.disable('x-powered-by')
 app.disable('strict-transport-security');
 app.use(express.static('public'));
 app.use(helmet.hidePoweredBy({
