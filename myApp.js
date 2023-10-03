@@ -10,6 +10,8 @@ app.use(helmet.frameguard({
 }));
 // xssFilter helps protect against XSS attacks
 app.use(helmet.xssFilter());
+// noSniff instructs the browser to not bypass the provided Content-type
+app.use(helmet.noSniff());
 
 module.exports = app;
 const api = require('./server.js');
