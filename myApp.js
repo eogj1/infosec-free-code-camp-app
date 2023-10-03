@@ -1,6 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 const app = express();
+const ninetyDaysInSeconds = 90*24*60*60;
 
 // hidePoweredBy hides express as it is vulnerable
 app.use(helmet.hidePoweredBy());
@@ -14,6 +15,10 @@ app.use(helmet.xssFilter());
 app.use(helmet.noSniff());
 // ieNoOpen prevents IE users from executing downloads in the site's trusted content
 app.use(helmet.ieNoOpen());
+// hsts() sets to use HTTPS for the next 90 days
+app.use(helmet.hsts({
+  maxAge: timeInSeconds, force: true
+}));
 
 module.exports = app;
 const api = require('./server.js');
