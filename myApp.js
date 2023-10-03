@@ -8,6 +8,8 @@ app.use(helmet.hidePoweredBy());
 app.use(helmet.frameguard({
   action: 'deny'
 }));
+// xssFilter helps protect against XSS attacks
+app.use(helmet.xssFilter());
 
 module.exports = app;
 const api = require('./server.js');
