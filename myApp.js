@@ -1,7 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 const app = express();
-const ninetyDaysInSeconds = 90*24*60*60;
+const timeInSeconds = 90*24*60*60;
 
 // hidePoweredBy hides express as it is vulnerable
 app.use(
